@@ -17,6 +17,7 @@ import (
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsfirehosereceiver/internal/metadata"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsfirehosereceiver/internal/unmarshaler"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsfirehosereceiver/internal/unmarshaler/cwmetricstream"
+	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsfirehosereceiver/internal/unmarshaler/otelmetricstream"
 )
 
 const (
@@ -28,7 +29,8 @@ const (
 var (
 	errUnrecognizedRecordType = errors.New("unrecognized record type")
 	availableRecordTypes      = map[string]bool{
-		cwmetricstream.TypeStr: true,
+		cwmetricstream.TypeStr:   true,
+		otelmetricstream.TypeStr: true,
 	}
 )
 
@@ -54,8 +56,10 @@ func validateRecordType(recordType string) error {
 // unmarshalers.
 func defaultMetricsUnmarshalers(logger *zap.Logger) map[string]unmarshaler.MetricsUnmarshaler {
 	cwmsu := cwmetricstream.NewUnmarshaler(logger)
+	omsu := otelmetricstream.NewUnmarshaler(logger)
 	return map[string]unmarshaler.MetricsUnmarshaler{
 		cwmsu.Type(): cwmsu,
+		omsu.Type():  omsu,
 	}
 }
 

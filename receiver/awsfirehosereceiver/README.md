@@ -62,3 +62,6 @@ See [documentation](https://docs.aws.amazon.com/firehose/latest/dev/create-desti
 The record type for the CloudWatch metric stream. Expects the format for the records to be JSON.
 See [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html) for details.
 
+### otel_v1
+The OpenTelemetry 1.0.0 format for the CloudWatch metric stream.
+See [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-formats-opentelemetry-100.html) for details.
