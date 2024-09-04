@@ -1,4 +1,4 @@
-module github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsfirehosereceiver
+module github.com/vihangvk/opentelemetry-collector-contrib/receiver/awsfirehosereceiver
 
 go 1.22.0
 
